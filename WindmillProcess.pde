@@ -23,7 +23,7 @@
     stroke(0);
     fill(0);
     
-    //calculate trig for each point
+    //calculate trig for each point and cache for each new index
     
     float xC = points.get(currentIndex).getX(),
           yC = points.get(currentIndex).getY();
