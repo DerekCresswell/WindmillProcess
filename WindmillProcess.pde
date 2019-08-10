@@ -10,10 +10,7 @@
   
     size(500, 500);
     
-    //No three lines co linear
-    for(int i = 0; i < 10; i++){
-      points.add(new Point(random(20, width - 20), random(20 , height - 20)));
-    }
+    points.add(new Point(random(20, width - 20), random(20 , height - 20)));
     
   }
   
@@ -23,7 +20,7 @@
     stroke(0);
     fill(0);
     
-    //calculate trig for each point and cache for each new index
+    //calculate trig for each point
     
     float xC = points.get(currentIndex).getX(),
           yC = points.get(currentIndex).getY();
@@ -42,5 +39,12 @@
     }
     
     currentAngle += 0.1;
+    
+  }
+  
+  void mousePressed(){
+  
+    points.add(new Point(mouseX, mouseY));
+    //ensure no 3 co-linear
     
   }
