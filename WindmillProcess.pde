@@ -25,12 +25,11 @@
     float xC = points.get(currentIndex).getX(),
           yC = points.get(currentIndex).getY();
     
-    
-    //Math needed here, see img file
-    float x1 = 0,
-          y1 = 0,
-          x2 = 0,
-          y2 = 0;
+    //Seems "Jittery"
+    float x1 = xC + cos(currentAngle) * width,
+          y1 = yC + sin(currentAngle) * height,
+          x2 = xC - cos(currentAngle) * width,
+          y2 = yC - sin(currentAngle) * height;
     
     line(x1, y1, x2, y2);
     
@@ -38,7 +37,7 @@
       p.drawPoint();
     }
     
-    currentAngle += 0.1;
+    currentAngle += 0.025;
     
   }
   
