@@ -20,7 +20,7 @@
     stroke(0);
     fill(0);
     
-    //calculate trig for each point
+    //Check for closest clickAngle
     
     float xC = points.get(currentIndex).getX(),
           yC = points.get(currentIndex).getY();
@@ -44,6 +44,9 @@
   void mousePressed(){
   
     points.add(new Point(mouseX, mouseY));
-    //ensure no 3 co-linear
+    points.get(points.size() - 1).findClickAngle(points.get(currentIndex).getX(), points.get(currentIndex).getY());
+    //Ensure no 3 co-linear
+    //Add Removing points
+    //Add space around point where you can place another point
     
   }
