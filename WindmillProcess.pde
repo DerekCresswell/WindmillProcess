@@ -19,13 +19,21 @@
     background(255);
     stroke(0);
     fill(0);
-    
-    //Check for closest clickAngle
+
+    for(Point p : points){
+      if(abs(p.getClickAngle() - currentAngle) <= 0.025){  
+        currentIndex = points.indexOf(p);
+        currentAngle += 0.025;
+        for(Point p2 : points){
+          p2.findClickAngle(points.get(currentIndex).getX(), points.get(currentIndex).getY());
+          System.out.println("Changed");
+        }
+      }
+    }
     
     float xC = points.get(currentIndex).getX(),
           yC = points.get(currentIndex).getY();
     
-    //Seems "Jittery"
     float x1 = xC + cos(currentAngle) * width,
           y1 = yC + sin(currentAngle) * height,
           x2 = xC - cos(currentAngle) * width,
@@ -38,6 +46,8 @@
     }
     
     currentAngle += 0.025;
+    if(currentAngle > PI * 2)
+      currentAngle = 0;
     
   }
   
@@ -45,6 +55,7 @@
   
     points.add(new Point(mouseX, mouseY));
     points.get(points.size() - 1).findClickAngle(points.get(currentIndex).getX(), points.get(currentIndex).getY());
+    System.out.println("BBB" + points.get(points.size() - 1).getClickAngle());
     //Ensure no 3 co-linear
     //Add Removing points
     //Add space around point where you can place another point
