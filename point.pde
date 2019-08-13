@@ -28,7 +28,7 @@
       float adj = y - yRef;
       //Not sure if the negatives will work.
       
-      clickAngle = (float)Math.atan(opp / adj);
+      clickAngle = abs((float)Math.atan(opp / adj));
       
     }
     
