@@ -3,7 +3,7 @@
   
   ArrayList<Point> points = new ArrayList<Point>();
   
-  float currentAngle = 0;
+  int currentAngle = 0;
   int currentIndex = 0;
 
   void setup(){
@@ -21,12 +21,11 @@
     fill(0);
 
     for(Point p : points){
-      if(abs(p.getClickAngle() - currentAngle) <= 0.025){  
+      if(p.getClickAngle() == currentAngle){  
         currentIndex = points.indexOf(p);
-        currentAngle += 0.025;
+        currentAngle++;
         for(Point p2 : points){
-          p2.findClickAngle(points.get(currentIndex).getX(), points.get(currentIndex).getY());
-          System.out.println("Changed");
+          p2.findClickAngle(points.get(currentIndex));
         }
       }
     }
@@ -34,10 +33,10 @@
     float xC = points.get(currentIndex).getX(),
           yC = points.get(currentIndex).getY();
     
-    float x1 = xC + cos(currentAngle) * width,
-          y1 = yC + sin(currentAngle) * height,
-          x2 = xC - cos(currentAngle) * width,
-          y2 = yC - sin(currentAngle) * height;
+    float x1 = xC + cos(radians(currentAngle)) * width,
+          y1 = yC + sin(radians(currentAngle)) * height,
+          x2 = xC - cos(radians(currentAngle)) * width,
+          y2 = yC - sin(radians(currentAngle)) * height;
     
     line(x1, y1, x2, y2);
     
@@ -45,8 +44,8 @@
       p.drawPoint();
     }
     
-    currentAngle += 0.025;
-    if(currentAngle > PI * 2)
+    currentAngle++;
+    if(currentAngle > 360)
       currentAngle = 0;
     
   }
@@ -54,8 +53,8 @@
   void mousePressed(){
   
     points.add(new Point(mouseX, mouseY));
-    points.get(points.size() - 1).findClickAngle(points.get(currentIndex).getX(), points.get(currentIndex).getY());
-    System.out.println("BBB" + points.get(points.size() - 1).getClickAngle());
+    points.get(points.size() - 1).findClickAngle(points.get(currentIndex));
+    System.out.println(points.get(points.size() - 1).clickAngle);
     //Ensure no 3 co-linear
     //Add Removing points
     //Add space around point where you can place another point

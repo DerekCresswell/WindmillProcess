@@ -2,7 +2,7 @@
   class Point {
   
     private float x, y;
-    private float clickAngle;
+    private int clickAngle;
     
     static final float r = 10;
     
@@ -19,16 +19,12 @@
     
     public float getY(){return y;}
     
-    public void findClickAngle(float xRef, float yRef){
+    public void findClickAngle(Point centerPoint){
     
-      //Add math
-      //x 
-      float opp = x - xRef;
-      //y
-      float adj = y - yRef;
-      //Not sure if the negatives will work.
-      
-      clickAngle = abs((float)Math.atan(opp / adj)) + PI;
+      double deltaY = (centerPoint.y - y);
+      double deltaX = (x - centerPoint.x);
+      double result = (Math.atan(deltaY - deltaX)); 
+      clickAngle = (result < 0) ? (int)(360 + result) : (int)result;
       
     }
     
