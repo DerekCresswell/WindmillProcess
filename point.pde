@@ -21,9 +21,9 @@
     
     public void findClickAngle(Point centerPoint){
     
-      double deltaY = (centerPoint.y - y);
-      double deltaX = (x - centerPoint.x);
-      double result = (Math.atan(deltaY - deltaX)); 
+      float deltaY = (centerPoint.y - y);
+      float deltaX = (x - centerPoint.x);
+      float result = degrees((float)Math.atan2(deltaY, deltaX)); 
       clickAngle = (result < 0) ? (int)(360 + result) : (int)result;
       
     }

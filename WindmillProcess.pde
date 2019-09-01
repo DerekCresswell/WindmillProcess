@@ -20,6 +20,10 @@
     stroke(0);
     fill(0);
 
+    System.out.println(currentAngle);
+
+    int overflowAngle = cycleInt(currentAngle + 180, 0, 360);
+        System.out.println(overflowAngle);
     for(Point p : points){
       if(p.getClickAngle() == currentAngle){  
         currentIndex = points.indexOf(p);
@@ -54,9 +58,23 @@
   
     points.add(new Point(mouseX, mouseY));
     points.get(points.size() - 1).findClickAngle(points.get(currentIndex));
-    System.out.println(points.get(points.size() - 1).clickAngle);
     //Ensure no 3 co-linear
     //Add Removing points
     //Add space around point where you can place another point
     
   }
+  
+  int cycleInt(int toCycle, int low, int high){
+  
+    while(toCycle < low || toCycle > high){
+        if(toCycle < low){
+          toCycle = high + 1 - (low - toCycle);
+        } else if(toCycle > high){
+          toCycle = low - 1 + (toCycle - high);
+        }
+    }
+    
+    return toCycle;
+    
+  }
+  
