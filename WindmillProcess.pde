@@ -20,12 +20,10 @@
     stroke(0);
     fill(0);
 
-    System.out.println(currentAngle);
-
     int overflowAngle = cycleInt(currentAngle + 180, 0, 360);
-        System.out.println(overflowAngle);
+
     for(Point p : points){
-      if(p.getClickAngle() == currentAngle){  
+      if(p.getClickAngle() == currentAngle || p.getClickAngle() == overflowAngle){  
         currentIndex = points.indexOf(p);
         currentAngle++;
         for(Point p2 : points){
