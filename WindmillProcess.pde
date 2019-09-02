@@ -11,7 +11,7 @@
     size(500, 500);
     
     points.add(new Point(random(20, width - 20), random(20 , height - 20)));
-    
+
   }
   
   void draw(){
@@ -19,9 +19,9 @@
     background(255);
     stroke(0);
     fill(0);
-
+    
     int overflowAngle = cycleInt(currentAngle + 180, 0, 360);
-
+    System.out.println(currentAngle + "  " + overflowAngle);
     for(Point p : points){
       if(p.getClickAngle() == currentAngle || p.getClickAngle() == overflowAngle){  
         currentIndex = points.indexOf(p);
@@ -35,10 +35,10 @@
     float xC = points.get(currentIndex).getX(),
           yC = points.get(currentIndex).getY();
     
-    float x1 = xC + cos(radians(currentAngle)) * width,
-          y1 = yC + sin(radians(currentAngle)) * height,
-          x2 = xC - cos(radians(currentAngle)) * width,
-          y2 = yC - sin(radians(currentAngle)) * height;
+    float x1 = xC + sin(radians(currentAngle - 90)) * width,
+          y1 = yC + cos(radians(currentAngle - 90)) * height,
+          x2 = xC - sin(radians(currentAngle - 90)) * width,
+          y2 = yC - cos(radians(currentAngle - 90)) * height;
     
     line(x1, y1, x2, y2);
     
@@ -75,4 +75,3 @@
     return toCycle;
     
   }
-  
