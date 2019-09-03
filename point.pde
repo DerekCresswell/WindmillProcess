@@ -10,10 +10,14 @@
     
         this.x = x;
         this.y = y;
-      
+        
     }
     
-    public void drawPoint(){circle(x, y, r);}
+    public void drawPoint(){
+    
+      circle(x, y, r);
+  
+    }
     
     public float getX(){return x;}
     
