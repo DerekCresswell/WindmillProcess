@@ -8,8 +8,8 @@
     
     public Point(float x, float y) {
     
-        this.x = x;
-        this.y = y;
+        this.x = constrain(x, 20, width - 20);
+        this.y = constrain(y, 20, height - 20);
         
     }
     
