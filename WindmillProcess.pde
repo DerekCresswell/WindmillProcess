@@ -23,6 +23,7 @@
     int overflowAngle = cycleInt(currentAngle + 180, 0, 360);
 
     for(Point p : points){
+      //Exclude main point from check + reset. Could affect edge cases.
       if(p.getClickAngle() == currentAngle || p.getClickAngle() == overflowAngle){  
         
         currentIndex = points.indexOf(p);
